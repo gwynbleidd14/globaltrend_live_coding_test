@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interative Form Validation</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      h1 {
+        text-align: center;
+        color: black;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #999999;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
+      }
+
+      input[type="password"],
+      input[type="text"] {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: rgb(96, 96, 255);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: blue;
+      }
+
+      .msg {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Interative Form</h1>
+
+    <div>
+      <form action="#" onsubmit="return validate()">
+        <label for="name">Name:</label><br />
+        <input type="text" placeholder="Enter Full Name" required /><br />
+
+        <p>
+          <label for="email">Email ID:</label><br />
+          <input type="text" id="mail" placeholder="Enter email" required />
+          <br />
+          <span id="email-error" class="msg"></span>
+        </p>
+
+        <p>
+          <label for="pwd">Password:</label><br />
+          <input
+            type="password"
+            id="pwd"
+            placeholder="Create a password"
+            required
+          /><br />
+          <span id="pwd-error" class="msg"></span>
+        </p>
+
+        <p>
+          <label for="confirm-pwd">Confirm Password:</label><br />
+          <input
+            type="password"
+            id="confirm-pass"
+            placeholder="Enter same password"
+            required
+          /><br />
+          <span id="confirmation-error" class="msg"></span>
+        </p>
+        <br />
+
+        <input type="submit" />
+      </form>
+    </div>
+    <script>
+      function validate() {
+        const mail = document.getElementById("mail");
+        const confirm = document.getElementById("confirm-pass");
+        const pass = document.getElementById("pwd");
+
+        const mailError = document.getElementById("email-error");
+        const passError = document.getElementById("pwd-error");
+        const confirmError = document.getElementById("confirmation-error");
+
+        let IsValid = true;
+
+        var mailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!mailregex.test(mail)) {
+          mailError.innerHTML = "Enter a valid email address";
+          IsValid = false;
+        }
+        if (pass.length < 8) {
+          passError.innerHTML = "Password must be atleast 8 characters";
+          IsValid = false;
+        }
+        if (confirm != pass) {
+          confirmError.innerHTML = "Passwords are not matching";
+          IsValid = false;
+        }
+        return IsValid;
+      }
+    </script>
+  </body>
+</html>
