@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navigation Bar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .navbar {
+        overflow: hidden;
+        background-color: aquamarine;
+        position: relative;
+      }
+
+      .navlinks {
+        display: none;
+        cursor: pointer;
+      }
+
+      a {
+        color: black;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        display: block;
+      }
+
+      img {
+        height: 100px;
+        width: 100px;
+      }
+
+      .hamburger {
+        background: #000;
+        display: flex;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 150px;
+        height: 105px;
+        cursor: pointer;
+      }
+
+      .hamburger:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .active {
+        background-color: rgb(97, 199, 165);
+        color: rgb(42, 42, 42);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img
+          src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1721984400&semt=sph"
+          alt="My Logo"
+        />
+      </div>
+      <ul class="navlinks">
+        <li id="home"><a href="#">Home</a></li>
+        <li id="about"><a href="#">About</a></li>
+        <li id="contact"><a href="#">Contact</a></li>
+      </ul>
+      <div class="hamburger" onclick="toggle()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <script>
+      function toggle() {
+        var x = document.querySelector(".navlinks");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>
