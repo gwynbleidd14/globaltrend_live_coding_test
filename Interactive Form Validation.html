@@ -108,9 +108,8 @@
         const confirmError = document.getElementById("confirmation-error");
 
         let IsValid = true;
-
-        var mailregex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!mailregex.test(mail)) {
+        
+        if (!mail.includes("@")) {
           mailError.innerHTML = "Enter a valid email address";
           IsValid = false;
         }
